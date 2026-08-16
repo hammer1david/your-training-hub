@@ -4,10 +4,6 @@ export default defineConfig({
   tanstackStart: {
     spa: {
       enabled: true,
-      prerender: {
-        outputPath: "/_shell.html",
-        crawlLinks: true,
-      },
     },
     server: {
       entry: "server",
