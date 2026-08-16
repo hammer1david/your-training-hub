@@ -89,7 +89,10 @@ function AuthPage() {
       toast.error(err instanceof Error ? err.message : "Something went wrong");
     } finally {
       setBusy(false);
+    }
   }
+
+
 
   async function sendPasswordLink() {
     const parsedEmail = z.string().trim().email().safeParse(email);
