@@ -89,7 +89,28 @@ function AuthPage() {
       toast.error(err instanceof Error ? err.message : "Something went wrong");
     } finally {
       setBusy(false);
+  }
+
+  async function sendPasswordLink() {
+    const parsedEmail = z.string().trim().email().safeParse(email);
+    if (!parsedEmail.success) {
+      toast.error("Enter your email first, then tap this again");
+      return;
     }
+    setBusy(true);
+    try {
+      const { error } = await supabase.auth.resetPasswordForEmail(parsedEmail.data, {
+        redirectTo: `${window.location.origin}/set-password`,
+      });
+      if (error) throw error;
+      toast.success("Check your email for a link to create your password");
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Could not send the email");
+    } finally {
+      setBusy(false);
+    }
+  }
+
   }
 
   async function google() {
