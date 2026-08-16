@@ -138,10 +138,11 @@ function AuthPage() {
 
         {sent ? (
           <p className="mt-6 rounded-lg bg-secondary p-4 text-sm">
-            We sent a confirmation link to <strong>{email}</strong>. Click it, then come back and
-            sign in.
+            We sent a link to <strong>{email}</strong>. Open it and you'll land straight on the page
+            to create your password.
           </p>
         ) : (
+
           <form onSubmit={onSubmit} className="mt-6 space-y-4">
             {mode === "signup" && (
               <div className="space-y-1.5">
