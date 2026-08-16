@@ -4,11 +4,19 @@ import { nitro } from "nitro/vite";
 export default defineConfig({
   tanstackStart: {
     server: { entry: "server" },
-    spa: {
+    prerender: {
       enabled: true,
+      autoSubfolderIndex: true,
+      autoStaticPathsDiscovery: true,
+      crawlLinks: true,
     },
   },
+
   vite: {
-    plugins: [nitro({ preset: "node-server" })],
+    plugins: [
+      nitro({
+        preset: "node-server",
+      }),
+    ],
   },
 });
